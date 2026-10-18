@@ -58,3 +58,30 @@ Thumbs.db
 # Anchor misc
 # ============================================================
 .anchor-cache/
+
+# ============================================================
+# Frontend (Next.js) — Milestone 5 additions
+# ============================================================
+frontend/node_modules/
+frontend/.next/
+frontend/out/
+frontend/build/
+frontend/dist/
+frontend/.turbo/
+frontend/.swc/
+frontend/next-env.d.ts
+frontend/.env
+frontend/.env.local
+frontend/.env.*.local
+frontend/*.tsbuildinfo
+frontend/coverage/
+frontend/.eslintcache
+
+# Stray folders from scaffolding (shouldn't exist but just in case)
+lib_saved/
+node_modules_saved/
+pkg_saved.json
+
+# Anchor temp folders
+.anchor/
+.anchor-cache/

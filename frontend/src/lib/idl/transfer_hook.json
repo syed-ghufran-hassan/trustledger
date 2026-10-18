@@ -1,0 +1,150 @@
+{
+  "address": "6AfFptyoquTBmzWFCPm783az9PDWz7gmBNcGV9hTG7bG",
+  "metadata": {
+    "name": "transfer_hook",
+    "version": "0.1.0",
+    "spec": "0.1.0"
+  },
+  "instructions": [
+    {
+      "name": "execute_transfer",
+      "discriminator": [
+        233,
+        126,
+        160,
+        184,
+        235,
+        206,
+        31,
+        119
+      ],
+      "accounts": [
+        {
+          "name": "source_account"
+        },
+        {
+          "name": "mint"
+        },
+        {
+          "name": "destination_account"
+        },
+        {
+          "name": "owner"
+        },
+        {
+          "name": "extra_account_meta_list"
+        }
+      ],
+      "args": [
+        {
+          "name": "_amount",
+          "type": "u64"
+        }
+      ]
+    },
+    {
+      "name": "initialize_extra_account_meta_list",
+      "discriminator": [
+        92,
+        197,
+        174,
+        197,
+        41,
+        124,
+        19,
+        3
+      ],
+      "accounts": [
+        {
+          "name": "payer",
+          "writable": true,
+          "signer": true
+        },
+        {
+          "name": "mint"
+        },
+        {
+          "name": "identity_registry_program"
+        },
+        {
+          "name": "extra_account_meta_list",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  101,
+                  120,
+                  116,
+                  114,
+                  97,
+                  45,
+                  97,
+                  99,
+                  99,
+                  111,
+                  117,
+                  110,
+                  116,
+                  45,
+                  109,
+                  101,
+                  116,
+                  97,
+                  115
+                ]
+              },
+              {
+                "kind": "account",
+                "path": "mint"
+              }
+            ]
+          }
+        },
+        {
+          "name": "system_program",
+          "address": "11111111111111111111111111111111"
+        }
+      ],
+      "args": []
+    }
+  ],
+  "errors": [
+    {
+      "code": 6000,
+      "name": "NotTransferring",
+      "msg": "Not a real token transfer"
+    },
+    {
+      "code": 6001,
+      "name": "MissingExtraAccounts",
+      "msg": "Missing extra accounts"
+    },
+    {
+      "code": 6002,
+      "name": "SenderNotVerified",
+      "msg": "Sender is not KYC-verified"
+    },
+    {
+      "code": 6003,
+      "name": "SenderSanctioned",
+      "msg": "Sender is sanctioned"
+    },
+    {
+      "code": 6004,
+      "name": "RecipientNotVerified",
+      "msg": "Recipient is not KYC-verified"
+    },
+    {
+      "code": 6005,
+      "name": "RecipientSanctioned",
+      "msg": "Recipient is sanctioned"
+    },
+    {
+      "code": 6006,
+      "name": "InvalidIdentity",
+      "msg": "Identity account is malformed"
+    }
+  ]
+}
