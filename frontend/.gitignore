@@ -1,6 +1,8 @@
 # See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
 
-# dependencies
+# ============================================================
+# Dependencies
+# ============================================================
 /node_modules
 /.pnp
 .pnp.*
@@ -10,32 +12,62 @@
 !.yarn/releases
 !.yarn/versions
 
-# testing
+# ============================================================
+# Testing
+# ============================================================
 /coverage
+.nyc_output
 
-# next.js
+# ============================================================
+# Next.js build output
+# ============================================================
 /.next/
 /out/
-
-# production
 /build
+/dist/
+.swc/
+.turbo/
 
-# misc
+# ============================================================
+# Misc
+# ============================================================
 .DS_Store
+Thumbs.db
 *.pem
+*.log
+.eslintcache
 
-# debug
+# ============================================================
+# Debug logs
+# ============================================================
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 .pnpm-debug.log*
 
-# env files (can opt-in for committing if needed)
-.env*
+# ============================================================
+# Env files (NEVER commit)
+# ============================================================
+.env
+.env.local
+.env*.local
 
-# vercel
+# ============================================================
+# Vercel
+# ============================================================
 .vercel
 
-# typescript
+# ============================================================
+# TypeScript
+# ============================================================
 *.tsbuildinfo
 next-env.d.ts
+
+# ============================================================
+# ⚠️ DO NOT IGNORE — these MUST be committed to git:
+#   /src/lib/idl/*.json    ← runtime Anchor IDLs
+#   /src/lib/types/*.ts    ← TypeScript types
+#   /src/lib/program.ts    ← Anchor client
+#   /src/lib/pda.ts        ← PDA helpers
+#   package.json, yarn.lock, tsconfig.json, next.config.*
+# ============================================================

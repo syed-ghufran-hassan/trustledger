@@ -1,8 +1,16 @@
-export default function Page() {
-  return (
-    <div>
-      <h1 className="text-3xl font-bold capitalize mb-2">regulator</h1>
-      <p className="text-slate-400">Coming in Milestone 6/7/8.</p>
-    </div>
-  );
+"use client";
+
+import dynamic from "next/dynamic";
+
+// Regulator dashboard loads @coral-xyz/anchor which is CJS-only —
+// must be dynamically imported client-side only to avoid SSR "exports is not defined"
+const RegulatorContent = dynamic(() => import("./content"), {
+  ssr: false,
+  loading: () => (
+    <div className="p-6 text-slate-400">Loading regulator dashboard...</div>
+  ),
+});
+
+export default function RegulatorPage() {
+  return <RegulatorContent />;
 }

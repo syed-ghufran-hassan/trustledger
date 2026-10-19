@@ -1,8 +1,14 @@
 "use client";
 
-import { WalletMultiButton } from "@solana/wallet-adapter-react-ui";
+import dynamic from "next/dynamic";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+
+// Wallet button must render client-only (SSR would show "Select Wallet" then swap)
+const WalletMultiButton = dynamic(
+  async () => (await import("@solana/wallet-adapter-react-ui")).WalletMultiButton,
+  { ssr: false }
+);
 
 const links = [
   { href: "/", label: "Home" },
@@ -21,7 +27,9 @@ export function Navbar() {
           <Link href="/" className="flex items-center gap-2 font-bold">
             <div className="w-7 h-7 rounded bg-blue-600 grid place-items-center">T</div>
             <span>TrustLedger</span>
-            <span className="text-xs text-slate-500 ml-1 hidden md:inline">SoloNode Labs</span>
+            <span className="text-xs text-slate-500 ml-1 hidden md:inline">
+              SoloNode Labs
+            </span>
           </Link>
           <div className="hidden md:flex gap-1">
             {links.map((l) => (
